@@ -8,11 +8,11 @@ const me = require("../../../public/javascripts/index");
 var assert = require("assert");
 
 
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../../app.js');
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const server = require("../../../app.js");
 
 //console.log(server);
 
@@ -32,16 +32,18 @@ describe("Test something from our homepage", function() {
         it("info.description should be array", function() {
             let info = me.info.find();
             let res = info[0].description[0];
+            let check = "In ten years time 100TWh fossile power, now used to drive vehicle, "
+            + "will be replaced by 30TWh electric power.";
 
-            assert.equal(res, "In ten years time 100TWh fossile power, now used to drive vehicle, will be replaced by 30TWh electric power.");
+            assert.equal(res, check);
         });
     });
 });
 
 
-describe('Index new model', () => {
-    describe('GET /index', () => {
-        it('200 HAPPY PATH', (done) => {
+describe("Index new model", () => {
+    describe("GET /index", () => {
+        it("200 HAPPY PATH", (done) => {
             chai.request(server)
                 .get("/")
                 .end((err, res) => {

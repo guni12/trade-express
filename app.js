@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 const bodyParser = require("body-parser");
-const createError = require('http-errors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const cors = require('cors');
+const createError = require("http-errors");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
 
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
-const registerRouter = require('./routes/register');
+const indexRouter = require("./routes/index");
+const loginRouter = require("./routes/login");
+const registerRouter = require("./routes/register");
 
 const app = express();
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 
 // don't show the log when it is test
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== "test") {
     // use morgan to log at command line
-    app.use(logger('combined')); // 'combined' outputs the Apache style LOGs
+    app.use(logger("combined")); // 'combined' outputs the Apache style LOGs
 }
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -31,9 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
+app.use("/", indexRouter);
+app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 
 
 // catch 404 and forward to error handler
@@ -45,23 +45,24 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res) {
     // set locals, only providing error in development
     res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.locals.error = req.app.get("env") === "development" ? err : {};
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render("error");
 });
 
-const debug = require('debug')('redovisa:server');
-const http = require('http');
+const debug = require("debug")("redovisa:server");
+const http = require("http");
 //const url = require('url');
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '1377');
-app.set('port', port);
+const port = normalizePort(process.env.PORT || "1377");
+
+app.set("port", port);
 
 /**
  * Create HTTP server.
@@ -70,36 +71,25 @@ app.set('port', port);
 const server = http.createServer(app);
 
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
-
-console.log(`Example app listening on port ${port}`);
-
-
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+    var port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
+    if (port >= 0) {
+        // port number
+        return port;
+    }
 
-  return false;
+    return false;
 }
 
 /**
@@ -107,40 +97,55 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== "listen") {
+        throw error;
+    }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    var bind = typeof port === "string"
+        ? 'Pipe ' + port
+        : 'Port ' + port;
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case "EACCES":
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case "EADDRINUSE":
+            console.error(bind + " is already in use");
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
+
+
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+    var addr = server.address();
+
+    var bind = typeof addr === "string"
+        ? "pipe " + addr
+        : "port " + addr.port;
+
+    debug("Listening on " + bind);
 }
+
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on("error", onError);
+server.on("listening", onListening);
+
+console.log(`Example app listening on port ${port}`);
 
 
 module.exports = server;

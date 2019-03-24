@@ -1,16 +1,14 @@
 /* global describe it */
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = "test";
 
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../../../app.js');
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const server = require("../../../app.js");
 
 chai.should();
 
-var path = require("path");
-const db = require(path.resolve(__dirname, '../../../db/database.js'));
-
-console.log(db);
+//var path = require("path");
+//const db = require(path.resolve(__dirname, "../../../db/database.js"));
 
 chai.use(chaiHttp);
 
@@ -25,9 +23,9 @@ function makeid() {
 }
 
 
-describe('Register and login user in before', function() {
-    describe('POST /register', () => {
-        it('1. should get 401 as we do not provide valid password', (done) => {
+describe("Register and login user in before", function() {
+    describe("POST /register", () => {
+        it("1. should get 401 as we do not provide valid password", (done) => {
             let user = {
                 email: "testing@example.com",
                 password: "",
@@ -46,7 +44,7 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('2a. should get 201', (done) => {
+        it("2a. should get 201", (done) => {
             let user = {
                 email: "test@example.com",
                 password: "123test",
@@ -68,7 +66,7 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('2b. should get 500 unique email constraint', (done) => {
+        it("2b. should get 500 unique email constraint", (done) => {
             let user = {
                 email: "test@example.com",
                 password: "123test",
@@ -83,13 +81,14 @@ describe('Register and login user in before', function() {
                     res.body.should.be.an("object");
                     res.body.should.have.property("errors");
                     var tx = "SQLITE_CONSTRAINT: UNIQUE constraint failed: users.email";
+
                     res.body.errors.detail.should.be.equal(tx);
                     done();
                 });
         });
 
 
-        it('3. should get 201 with random email', (done) => {
+        it("3. should get 201 with random email", (done) => {
             let pre = makeid();
             let unique = pre + "@example.com";
             let user = {
@@ -111,15 +110,11 @@ describe('Register and login user in before', function() {
                     done();
                 });
         });
-
-
-
-
     });
 
 
 
-    describe('POST /login', () => {
+    describe("POST /login", () => {
         it('4. should get 401 as we do not provide valid password', (done) => {
             let user = {
                 email: "test@example.com",
@@ -140,7 +135,7 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('5. should get 401 as we do not provide valid email', (done) => {
+        it("5. should get 401 as we do not provide valid email", (done) => {
             let user = {
                 //email: "test@example.com",
                 password: "123test",
@@ -160,7 +155,7 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('6. should get 401 as we provide wrong email', (done) => {
+        it("6. should get 401 as we provide wrong email", (done) => {
             let user = {
                 email: "testing@example.com",
                 password: "123test",
@@ -180,7 +175,7 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('7. should get 401 as we provide wrong password', (done) => {
+        it("7. should get 401 as we provide wrong password", (done) => {
             let user = {
                 email: "test@example.com",
                 password: "1234test",
@@ -200,8 +195,8 @@ describe('Register and login user in before', function() {
         });
 
 
-        it('8. should get 201 as we do provide correct keys', (done) => {
-            process.env.JWT_SECRET = 'secret';
+        it("8. should get 201 as we do provide correct keys", (done) => {
+            process.env.JWT_SECRET = "secret";
             //console.log("jwt", process.env.JWT_SECRET);
             let user = {
                 email: "test@example.com",

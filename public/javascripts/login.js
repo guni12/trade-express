@@ -1,7 +1,7 @@
 const db = require('../../db/database.js');
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 module.exports = (function () {
     function login(res, req) {
@@ -65,7 +65,7 @@ module.exports = (function () {
                     if (result) {
                         const payload = { email: user.email, id: user.id };
                         const secret = process.env.JWT_SECRET;
-                        const token = jwt.sign(payload, secret, { expiresIn: '1h'});
+                        const token = jwt.sign(payload, secret, { expiresIn: "1h"});
 
                         return res.json({
                             data: {
