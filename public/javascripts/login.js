@@ -1,4 +1,5 @@
 const db = require('../../db/database.js');
+const reg = require('./register.js');
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -11,54 +12,33 @@ module.exports = (function () {
         //console.log(req.body);
 
         if (!email || !simplepw) {
-            return res.status(401).json({
-                errors: {
-                    status: 401,
-                    source: "/login",
-                    title: "Email or password missing",
-                    detail: "Email or password missing in request"
-                }
-            });
+            let obj = reg.reterror(401, "/login", "Email or password missing");
+
+            return res.status(401).json(obj);
         }
 
         db.get("SELECT * FROM users WHERE email = ?",
             email,
             (err, rows) => {
                 if (err) {
-                    return res.status(500).json({
-                        errors: {
-                            status: 500,
-                            source: "/login",
-                            title: "Database error",
-                            detail: err.message
-                        }
-                    });
+                    let obj = reg.reterror(500, "/login", err.message);
+
+                    return res.status(500).json(obj);
                 }
 
                 if (rows === undefined) {
-                    return res.status(401).json({
-                        errors: {
-                            status: 401,
-                            source: "/login",
-                            title: "User not found",
-                            detail: "User with provided email not found."
-                        }
-                    });
+                    let obj = reg.reterror(401, "/login", "User with provided email not found.");
+
+                    return res.status(401).json(obj);
                 }
 
                 const user = rows;
 
                 bcrypt.compare(simplepw, user.password, (err, result) => {
                     if (err) {
-                        //console.log("I compare", err);
-                        return res.status(500).json({
-                            errors: {
-                                status: 500,
-                                source: "/login",
-                                title: "bcrypt error",
-                                detail: "bcrypt error"
-                            }
-                        });
+                        let obj = reg.reterror(500, "/login", "bcrypt error");
+
+                        return res.status(500).json(obj);
                     }
 
 
@@ -76,14 +56,9 @@ module.exports = (function () {
                             }
                         });
                     } else {
-                        return res.status(401).json({
-                            errors: {
-                                status: 401,
-                                source: "/login",
-                                title: "Wrong password",
-                                detail: "Password is incorrect."
-                            }
-                        });
+                        let obj = reg.reterror(401, "/login", "Password is incorrect.");
+
+                        return res.status(401).json(obj);
                     }
                 });
             });

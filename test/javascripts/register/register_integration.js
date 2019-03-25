@@ -54,6 +54,7 @@ describe("Register and login user in before", function() {
                 .post("/register")
                 .send(user)
                 .end((err, res) => {
+                    console.log(res.body, res.headers);
                     res.should.have.status(201);
                     //console.log(res.body);
                     res.body.should.be.an("object");
@@ -168,7 +169,7 @@ describe("Register and login user in before", function() {
                     res.should.have.status(401);
                     res.body.should.be.an("object");
                     res.body.errors.status.should.be.equal(401);
-                    res.body.errors.title.should.be.equal("User not found");
+                    res.body.errors.title.should.be.equal("User with provided email not found.");
 
                     done();
                 });
@@ -188,7 +189,7 @@ describe("Register and login user in before", function() {
                     res.should.have.status(401);
                     res.body.should.be.an("object");
                     res.body.errors.status.should.be.equal(401);
-                    res.body.errors.title.should.be.equal("Wrong password");
+                    res.body.errors.title.should.be.equal("Password is incorrect.");
 
                     done();
                 });

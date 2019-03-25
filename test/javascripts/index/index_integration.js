@@ -23,16 +23,16 @@ chai.use(chaiHttp);
 describe("Test something from our homepage", function() {
     describe("We test the info function.", function() {
         it("info.header should be Front", function() {
-            var info = me.info.find();
+            var info = me.find();
             let res = info[0].header;
 
             assert.equal(res, "Front");
         });
 
         it("info.description should be array", function() {
-            let info = me.info.find();
+            let info = me.find();
             let res = info[0].description[0];
-            let check = "In ten years time 100TWh fossile power, now used to drive vehicle, "
+            let check = "In ten years time 100TWh fossile power, now used to drive vehicles, "
             + "will be replaced by 30TWh electric power.";
 
             assert.equal(res, check);
