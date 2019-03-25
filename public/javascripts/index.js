@@ -6,14 +6,14 @@ var obj = {
                     "header": "Front",
                     "description": [
                         "In ten years time 100TWh fossile power, "
-                        + "now used to drive vehicle, will be replaced by 30TWh electric power.",
+                        + "now used to drive vehicles, will be replaced by 30TWh electric power.",
                         "Most of the electric power will "
                         + "be distributed through existing powerlines.",
                         "With good political descisions we can avoid expensive investments, "
                         + "only needed for extreme load on the powerline.",
-                        "In Swedish we call this system dELa",
-                        "",
-                        "In our prototype we have an Electrical Station "
+                        "We call this system dELa.",
+                        "---",
+                        "For our prototype we have an Electrical Station "
                         + "that supplies 100 households with current. "
                         + "Every household has the right to extract 25A at every given moment.",
                         "But if everyone would use 25A at the same time, there will be problems.",
