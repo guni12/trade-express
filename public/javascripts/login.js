@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 module.exports = (function () {
     function login(res, req) {
         let user = res.locals.user;
-        let err = res.locals.err;
 
         bcrypt.compare(req.body.password, user.password, (err, result) => {
             if (err) {

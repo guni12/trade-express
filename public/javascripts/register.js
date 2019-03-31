@@ -26,7 +26,7 @@ module.exports = (function () {
 
                     res.status(201).json({
                         data: {
-                            message: "User " + req.body.email + " successfully registered with: ." + hash
+                            message: "User " + req.body.email + " registered with: ." + hash
                         }
                     });
                 });
