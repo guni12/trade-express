@@ -54,7 +54,7 @@ describe("Register and login user", function() {
                 .post("/register")
                 .send(user)
                 .end((err, res) => {
-                    console.log(res.body, res.headers);
+                    console.log("2a", res.body, res.headers);
                     res.should.have.status(201);
                     //console.log(res.body);
                     res.body.should.be.an("object");
