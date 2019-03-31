@@ -10,7 +10,17 @@ module.exports = (function () {
         next();
     }
 
+    function isundefined(res, req, next) {
+        if (res.locals.user === undefined) {
+            let obj = reg.reterror(401, "/login", "User with provided email not found.");
+
+            return res.status(401).json(obj);
+        }
+        next();
+    }
+
     return {
-        hascred: hascred
+        hascred: hascred,
+        isundefined: isundefined
     };
 }());
