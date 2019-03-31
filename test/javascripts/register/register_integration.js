@@ -23,7 +23,7 @@ function makeid() {
 }
 
 
-describe("Register and login user in before", function() {
+describe("Register and login user", function() {
     describe("POST /register", () => {
         it("1. should get 401 as we do not provide valid password", (done) => {
             let user = {

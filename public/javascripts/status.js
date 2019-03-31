@@ -20,8 +20,9 @@ module.exports = (function () {
             }
         };
     }
+
     return {
         reterror: reterror,
-        retsuccess: retsuccess
+        retsuccess: retsuccess,
     };
 }());
