@@ -40,5 +40,6 @@
     "javascript-style-guide": "^0.9.10",
     "mocha": "^5.2.0",
     "nyc": "^13.3.0"
-  }
+  },
+  "version": "1.0.0"
 }
