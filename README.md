@@ -12,7 +12,7 @@ Express was created by TJ Holowaychuk with the intention to be light and easy to
 
 When PayPal moved from Java to Node.js the average response time was decreased by 35% for the same page [(ref)](https://apiko.com/blog/express-mobile-app-development/).
 
-In `package.json` various plugins collected from node-modules can be spotted.
+**In `package.json` various plugins collected from node-modules can be spotted.**
 
 | Plugin | USED FOR |
 | ------ | ------ |
