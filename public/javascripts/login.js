@@ -1,4 +1,3 @@
-    
 const reg = require('./status.js');
 
 const bcrypt = require("bcrypt");
@@ -29,7 +28,6 @@ module.exports = (function () {
             }
         });
     }
-
 
     return {
         login: login
