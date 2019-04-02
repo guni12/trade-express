@@ -10,7 +10,7 @@ trade-express is a backend server providing secure login services for a trading 
 
 Express was created by TJ Holowaychuk with the intention to be light and easy to expand with various plugins. All is also opensource. Express is part of the MEAN stack and highly regarded by developers for its simplicity, extensibility and performance. With only one language, javascript, developers can this way become full-stack.
 
-When PayPal moved from Java to Node.js the average response time was decreased by 35% for the same page [ref](https://apiko.com/blog/express-mobile-app-development/).
+When PayPal moved from Java to Node.js the average response time was decreased by 35% for the same page [(ref)](https://apiko.com/blog/express-mobile-app-development/).
 
 In `package.json` various plugins collected from node-modules can be spotted.
 
@@ -28,3 +28,5 @@ The `devDependencies` plugins are there for testing and improvement of the code 
 **trade-express together with socket and frontend**
 
 This platform was created (together with [trade-socket](https://github.com/guni12/trade-socket) and [trade-vue](https://github.com/guni12/trade-vue)) as my final project at [Blekinge Tekniska Högskola](https://www.bth.se/eng/) for the course Ramverk2. The real-time application microserver keeps track of prices and assets for each member, and the frontend application creates the visual experience containing charts.
+
+Author: Gunvor Nilsson
