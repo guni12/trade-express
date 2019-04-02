@@ -15,13 +15,13 @@ When PayPal moved from Java to Node.js the average response time was decreased b
 ### In `package.json` various plugins collected from node-modules can be spotted.
 
 | Plugin       | USED FOR                                                                         |
-| ------------ | ------------------------------------------------------------------------------ - |
+| ------------ | -------------------------------------------------------------------------------- |
 | sqlite3      | Database for saving members id, email and password                               |
 | bcrypt       | Easy system to hash and compare passwords                                        |
 | cors         | Enable cross-origin resource sharing (CORS) requests                             |
 | http-errors  | Help create nice error-messages for 4xx and 5xx status codes                     |
 | morgan       | Great for debugging information during development, generates logs automatically |
-| jsonwebtoken | Adds security to the login-process with crypting a secret key together with payload and creating a token, lasting for a certain amount of time                                                                          |
+| jsonwebtoken | Adds security to the login-process with crypting a secret key together with payload and creating a token, lasting for a certain amount of time |
 
 The **`devDependencies`** plugins are there for testing and improvement of the code status during development. `eslint` identifies mistakes in codepatterns. From `javascript-style-guide` we collect the eslint configuration-file. `mocha` is a convenient and easy to use test framework. With `chai` and `chai-http` asserts and http-requests are added. Istanbul `nyc` is a command-line-client that reports the test-result as a table. Together with `coveralls` and `codecov` it will be a part of your continuous-integration flow via Travis.
 
